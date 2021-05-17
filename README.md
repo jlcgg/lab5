@@ -1,6 +1,6 @@
 # [Paradigmas de Programação 2020/2021](https://elearning.ual.pt/course/view.php?id=1946), [UAL](https://autonoma.pt/)
 
-## Laboratório 4: *Lambda*
+## Laboratório 5: *Lambda*
 
 Este laboratório propõe exercícios focados em expressões *lambda* em Java (JDK >= 8).
 
@@ -11,17 +11,6 @@ funcionalidade, sem recorrer explicitamente a instruções.
 
 A construção fundamental `() -> { }` representa a instanciação de um objeto com um único método, cujo tipo está definido
 por uma interface.
-
-### Documentação JDK 11 relevante
-
-- [`java.lang.Thread`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Thread.html)
-- [`java.util.Random`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html)
-- [`java.util.Timer`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Timer.html)
-- [`java.util.TimerTask`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/TimerTask.html)
-- [`synchronized`](https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html)
-- [`java.util.concurrent.Lock`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/locks/Lock.html)
-- [`java.util.Condition`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/locks/Condition.html)
-- [`java.util.concurrent.Executors`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/Executors.html)
 
 ## Tarefas
 
