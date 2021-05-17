@@ -46,9 +46,9 @@ public class App {
         intPairs.addPair(new Pair<Integer>(20, 2));
         intPairs.addPair(new Pair<Integer>(30, 3));
 
-        List<Integer> results = intPairs.compute( (p) -> p.getA() + p.getB());
-        results.forEach(System.out::println);
+//        List<Integer> results = intPairs.compute( (p) -> p.getA() + p.getB());
+//        results.forEach(System.out::println);
 
-//        intPairs.compute((p) -> p.getA() + p.getB()).stream().forEach(System.out::println);
+        intPairs.compute((p) -> p.getA() + p.getB()).forEach(System.out::println);
     }
 }
