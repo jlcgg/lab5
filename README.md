@@ -12,7 +12,7 @@ funcionalidade, sem recorrer explicitamente a instruções.
 A construção fundamental `() -> { }` representa a instanciação de um objeto com um único método, cujo tipo está definido
 por uma interface.
 
-## Tarefas
+:wq## Tarefas
 
 ### Tarefa 1
 
