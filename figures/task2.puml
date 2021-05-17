@@ -1,0 +1,23 @@
+@startuml task2
+!define LIGHTBLUE
+!includeurl https://gist.githubusercontent.com/amgs/de57560012a8a5f0e4240f392b678a40/raw/c903c6b4f16b60b5eef3248f093497faae378f51/style.puml
+class Pair<T> {
+    +T a
+    +T b
+}
+
+interface Aggregator<T> {
+    T aggregate(Pair<T> pair)
+}
+
+class PairCollection<T> {
+    +List<Pair<T>> pairs
+    +void addPair(Pair<T> pair)
+    +List<T> compute(PairAggregator<T> aggregator)
+}
+PairCollection *-- "0..*" Pair
+PairCollection <. Aggregator
+
+class SumAggregator<Integer>
+Aggregator <|.. SumAggregator
+@enduml

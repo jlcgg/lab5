@@ -1,0 +1,18 @@
+@startuml task1
+!define LIGHTBLUE
+!includeurl https://gist.githubusercontent.com/amgs/de57560012a8a5f0e4240f392b678a40/raw/c903c6b4f16b60b5eef3248f093497faae378f51/style.puml
+
+interface I {
+    void m()
+}
+
+class B {
+    void goal(I impl)
+}
+B .> I
+
+class A {
+    void m()
+}
+I <|.. A
+@enduml

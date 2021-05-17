@@ -1,0 +1,24 @@
+@startuml task3
+!define LIGHTBLUE
+!includeurl https://gist.githubusercontent.com/amgs/de57560012a8a5f0e4240f392b678a40/raw/c903c6b4f16b60b5eef3248f093497faae378f51/style.puml
+
+participant main.StartServer <<Thread>>
+participant main.StartClient <<Thread>>
+main.StartServer -> TCPServer ** : create
+loop 3 times
+    main.StartClient -> TCPClient ** : create
+end
+loop 3 times
+    participant TCPServerThread <<Thread>>
+    TCPServer -> TCPServer : socket = accept()
+    activate TCPServer
+    TCPClient -> TCPServer : connect
+    deactivate
+    TCPServer -> TCPServerThread **: create(socket)
+    TCPServerThread --> TCPClient : socket
+    TCPClient -> TCPServerThread : ""ping""
+    TCPServerThread --> TCPClient : ""pong""
+end
+
+
+@enduml
