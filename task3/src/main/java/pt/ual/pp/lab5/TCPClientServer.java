@@ -30,49 +30,53 @@ class TCPServer {
         var count = 0;
         while(count < 3) {
             count++;
-            Socket socket = serverSocket.accept();
-            new TCPServerThread(socket).start();
+            final Socket socket = serverSocket.accept();
+//            new TCPServerThread(socket).start();
+            new Thread(() -> {
+                try {
+                    final var printWriter = new PrintWriter(socket.getOutputStream());
+                    final var scanner = new Scanner(socket.getInputStream());
+                    System.out.println("Client sent: " + scanner.nextLine());
+                    printWriter.println("pong");
+                    printWriter.flush();
+                    printWriter.close();
+                    scanner.close();
+                    socket.close();
+                } catch(IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
         }
         serverSocket.close();
     }
 }
 
-class TCPServerThread extends Thread {
-    private final Socket socket;
-
-    public TCPServerThread(final Socket socket) {
-        this.socket = socket;
-    }
-
-    @Override
-    public void run() {
-        try {
-            final var printWriter = new PrintWriter(socket.getOutputStream());
-            final var scanner = new Scanner(socket.getInputStream());
-            System.out.println("Client sent: " + scanner.nextLine());
-            printWriter.println("pong");
-            printWriter.flush();
-            printWriter.close();
-            scanner.close();
-            socket.close();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
+//class TCPServerThread extends Thread {
+//    private final Socket socket;
+//
+//    public TCPServerThread(final Socket socket) {
+//        this.socket = socket;
+//    }
+//
+//    @Override
+//    public void run() {
+//        try {
+//            final var printWriter = new PrintWriter(socket.getOutputStream());
+//            final var scanner = new Scanner(socket.getInputStream());
+//            System.out.println("Client sent: " + scanner.nextLine());
+//            printWriter.println("pong");
+//            printWriter.flush();
+//            printWriter.close();
+//            scanner.close();
+//            socket.close();
+//        } catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//}
 
 public class TCPClientServer {
     public static void main(String[] args) {
-//        Runnable startServer = new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    new TCPServer();
-//                } catch(IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
         new Thread(() -> {
             try {
                 new TCPServer();
